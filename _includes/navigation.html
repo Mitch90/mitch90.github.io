@@ -1,0 +1,13 @@
+<nav>
+    <div>
+        <h3><span id="name">Michele</span> <span id="surname">Invernizzi</span></h3>
+        <h4><span>interaction</span> &#x27f7 <span>information</span> designer</h4>
+    </div>
+    {% if include.layout == 'project' %}
+    <h5>{{ include.title }}</h5>
+    {% endif %}
+    <ul>
+        <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="link--active"{% endif %}>Selected projects</a></li>
+        <li><a href="{{ '/about' | relative_url }}" {% if page.url == '/about.html' %}class="link--active"{% endif %}>About</a></li>
+    </ul>
+</nav>

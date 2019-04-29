@@ -6,9 +6,19 @@
         <title>{{ page.title }}</title>
         <link type="text/css" rel="stylesheet" href="https://rsms.me/inter/inter.css">
         <link type="text/css" rel="stylesheet" href="{{ 'assets/css/master.css' | relative_url }}">
+        {% if page.url == '/' %}
+        <link type="text/css" rel="stylesheet" href="{{ 'assets/css/home.css' | relative_url }}">
+        {% endif %}
+        {% if page.layout == 'default' %}
+        <script src="https://code.jquery.com/jquery-3.4.0.slim.min.js" integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI=" crossorigin="anonymous" defer></script>
+        <script src="{{ 'assets/js/utils.js' | relative_url }}" defer></script>
+        <script src="{{ 'assets/js/home.js' | relative_url }}" defer></script>
+        {% endif %}
     </head>
     <body>
-        {% include navigation.html %}
+        {% assign page_layout = page.layout %}
+        {% assign page_title = page.title %}
+        {% include navigation.html layout=page_layout title=page_title %}
         {{ content }}
         {% include footer.html %}
     </body>

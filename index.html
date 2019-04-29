@@ -1,4 +1,22 @@
 ---
 title: Selected Projects – Michele Invernizzi's Portfolio
 ---
-<h1>Prova</h1>
+<main>
+    <div class="projects__container">
+        <h5>Selected projects</h5>
+        <div class="projects__list">
+            {% assign projects = site.projects | sort: "order" %}
+            {% for project in projects %}
+            <a href="{{ project.url }}">{{ project.title }}</a>
+            {% unless forloop.last %}
+            <span>&#x2014</span>
+            {% endunless %}
+            {% endfor %}
+        </div>
+    </div>
+    {% for project in site.projects %}
+    <div class="project__card">
+        <img src="{{ '/assets/images/' | append: project.thumbnail | relative_url }}" alt="">
+    </div>
+    {% endfor %}
+</main>
