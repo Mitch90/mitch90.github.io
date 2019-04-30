@@ -8,21 +8,12 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.projects__container {
-    display: grid;
-    grid-template: 1fr / 1fr 45vw 1fr;
-}
-
-.projects__container h5 {
-    margin-top: calc(4.8vmin - 18px);
-    padding: 0 var(--margin);
-    text-align: right;
+    align-items: center;
 }
 
 .projects__list {
-    font-size: 4.8vmin;
+    width: 45vw;
+    font-size: 2.4vw;
 }
 
 .projects__list a {
@@ -48,16 +39,18 @@ main {
     cursor: grab;
     border: 1px solid var(--color-dark);
     border-radius: 2px;
-    box-shadow: 0px 4px 8px rgba(85,85,85,50);
+    box-shadow: 0px 4px 8px rgba(100,100,100,0.5);
     background-color: var(--color-light);
     transform-origin: center;
-    transition-property: left, top;
-    transition-duration: 0.5s;
+    transition-property: left, top, transform;
+    transition-duration: 0.7s;
     transition-timing-function: ease;
 }
 
 .project__card.card--moving {
-    transition: none;
+    transition-property: transform;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
     cursor: grabbing;
 }
 

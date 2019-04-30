@@ -16,7 +16,7 @@ $(function () {
         $(this).css({
             "left": sampleArray[i][0],
             "top": sampleArray[i][1],
-            "transform": `rotate(${randomRotation}deg)`,
+            "transform": `rotate(${randomRotation}deg) scale(1)`,
             "transition-delay": `${i * .05}s`
         });
     });

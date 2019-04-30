@@ -2,21 +2,19 @@
 title: Selected Projects – Michele Invernizzi's Portfolio
 ---
 <main>
-    <div class="projects__container">
-        <h5>Selected projects</h5>
-        <div class="projects__list">
-            {% assign projects = site.projects | sort: "order" %}
-            {% for project in projects %}
-            <a href="{{ project.url }}">{{ project.title }}</a>
-            {% unless forloop.last %}
-            <span>&#x2014</span>
-            {% endunless %}
-            {% endfor %}
-        </div>
+    <div class="projects__list">
+        {% assign projects = site.projects | sort: "order" %}
+        {% for project in projects %}
+        <a href="{{ project.url }}">{{ project.title }}</a>
+        {% unless forloop.last %}
+        <span>&#x2014</span>
+        {% endunless %}
+        {% endfor %}
     </div>
     {% for project in site.projects %}
     <div class="project__card">
-        <img src="{{ '/assets/images/' | append: project.thumbnail | relative_url }}" alt="">
+        <img srcset="{{ '/assets/images/' | append: project.thumbnail | relative_url }},
+             {{ '/assets/images/' | append: project.thumbnail | replace: '.png', '-2x.png' | relative_url }} 2x" src="{{ '/assets/images/' | append: project.thumbnail | replace: '.png', '-2x.png' | relative_url }}" alt="Thumbnail for project {{ project.title }}">
     </div>
     {% endfor %}
 </main>
