@@ -5,13 +5,13 @@ nav {
     justify-content: space-between;
 }
 
-nav h3 {
-    font-size: 16px;
-}
-
 nav h4 {
     font-size: 16px;
     font-variation-settings: 'wght' var(--font-regular);
+}
+
+nav h5 {
+    opacity: 0;
 }
 
 nav ul {

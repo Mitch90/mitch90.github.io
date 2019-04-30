@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<header>
+    <div class="header__container">
+        <h1>{{ page.title }}</h1>
+        <h2>{{ page.subtitle }}</h2>
+        <div class="info__container">
+            <div class="info">
+                <h3>With</h3>
+                {% for name in page.team %}
+                <p>{{ name }}</p>
+                {% endfor %}
+            </div>
+            <div class="info">
+                <h3>Year</h3>
+                <p>{{ page.year }}</p>
+            </div>
+            <div class="info">
+                <h3>Role</h3>
+                <p>{{ page.role }}</p>
+            </div>
+            <div class="info">
+                <h3>Technology</h3>
+                {% for tech in page.technology %}
+                <p>{{ tech }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <a href="{{ page.link.url }}" target="_blank" class="project__link external--link">{{ page.link.title }}</a>
+    </div>
+</header>
+<main>
+    {{ content }}
+</main>

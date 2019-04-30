@@ -49,8 +49,8 @@ main {
 
 .project__card.card--moving {
     transition-property: transform;
-    transition-duration: 0.3s;
-    transition-timing-function: linear;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
     cursor: grabbing;
 }
 

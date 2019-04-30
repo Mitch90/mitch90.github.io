@@ -22,8 +22,14 @@ h3, h4, h5, ul {
     padding: 0;
 }
 
+h3 {
+    font-size: 16px;
+}
+
 h5 {
     font-size: 16px;
+    font-variation-settings: 'wght' var(--font-regular);
+    text-transform: uppercase;
 }
 
 a {

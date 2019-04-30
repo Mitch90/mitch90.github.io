@@ -3,13 +3,14 @@ var selected = null, // Object of the element to be moved
     x_elem = 0, y_elem = 0; // Stores top, left values (edge) of the element
 
 // Will be called when user starts dragging an element
-function initDrag(el) {
+function initDrag(el, parent) {
     // Store the object of the element which needs to be moved
     selected = el;
     let $el = $(el); 
     let rotation = $el.attr('style').replace(/.*(rotate\(.*deg\)).*/,'$1');
     $el.css('transform', `${rotation} scale(1.05)`);
     el.classList.add('card--moving');
+    $el.appendTo(parent);
     x_elem = x_pos - selected.offsetLeft;
     y_elem = y_pos - selected.offsetTop;
     

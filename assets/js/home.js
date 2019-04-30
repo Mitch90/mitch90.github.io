@@ -22,7 +22,7 @@ $(function () {
     });
     $cards.on("mousedown", function (ev) {
         ev.preventDefault();
-        initDrag(ev.currentTarget);
+        initDrag(ev.currentTarget, "#home");
     });
     document.onmousemove = dragElement;
     document.onmouseup = emptySelection;
