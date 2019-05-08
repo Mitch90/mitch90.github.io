@@ -5,7 +5,7 @@ $(function () {
     const margin = cardDimension / 2;
     const dimensionsArray = [margin, margin, viewportWidth - margin, viewportHeight - margin];
     const $cards = $('.project__card');
-    // console.log(viewportWidth, viewportHeight);
+    console.log(viewportWidth, viewportHeight);
 
     const sampleArray = makeSamples();
     // console.log(sampleArray);
