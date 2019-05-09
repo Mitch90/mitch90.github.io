@@ -5,12 +5,13 @@ $(function () {
     const margin = cardDimension / 2;
     const dimensionsArray = [margin, margin, viewportWidth - margin, viewportHeight - margin];
     const $cards = $('.project__card');
-    console.log(viewportWidth, viewportHeight);
+    const $projects = $('.projects__list a');
+    // console.log(viewportWidth, viewportHeight);
 
+    // get random points to throw the cards
     const sampleArray = makeSamples();
-    // console.log(sampleArray);
-    
-    $cards.each(function(i) {
+
+    $cards.each(function (i) {
         let randomRotation = Math.floor(Math.random() * 30) - 15;
 
         $(this).css({
@@ -22,10 +23,37 @@ $(function () {
     });
     $cards.on("mousedown", function (ev) {
         ev.preventDefault();
-        initDrag(ev.currentTarget, "#home");
+        initDrag(ev.currentTarget, "home");
+    }).on("mouseover", function (ev) {
+        let order = ev.currentTarget.getAttribute('data-order');
+        let $project = document.querySelector(`.projects__list a[data-order='${order}']`);
+        
+        $project.classList.add('card--match');
+    }).on("mouseleave", function (ev) {
+        let order = ev.currentTarget.getAttribute('data-order');
+        let $project = document.querySelector(`.projects__list a[data-order='${order}']`);
+        
+        $project.classList.remove('card--match');
     });
     document.onmousemove = dragElement;
     document.onmouseup = emptySelection;
+
+    $projects.on("mouseover", function (ev) {
+        let order = ev.currentTarget.getAttribute('data-order');
+        let $card = document.querySelector(`.project__card[data-order='${order}']`);
+        let parentEl = document.getElementById('home');
+        let rotation = $card.getAttribute('style').replace(/.*(rotate\(.*deg\)).*/, '$1');
+        $card.style.transform = `${rotation} scale(1.05)`;
+        $card.classList.add('card--moving');
+        parentEl.appendChild($card);
+
+    }).on("mouseleave", function (ev) {
+        let order = ev.currentTarget.getAttribute('data-order');
+        let $card = document.querySelector(`.project__card[data-order='${order}']`);
+        let rotation = $card.getAttribute('style').replace(/.*(rotate\(.*deg\)).*/,'$1');
+        $card.style.transform = `${rotation} scale(1)`;
+        $card.classList.remove('card--moving');
+    });
 
     function makeSamples() {
         let newSamples = [...samples(dimensionsArray, $cards.length)];
@@ -41,7 +69,7 @@ $(function () {
             }
             return newSamples;
         }
-        
+
     }
 });
 

@@ -15,6 +15,7 @@ html {
 body {
     margin: var(--margin-optimized) var(--margin) var(--margin);
     overflow-x: hidden;
+    background-color: var(--color-light);
 }
 
 h3, h4, h5, ul {

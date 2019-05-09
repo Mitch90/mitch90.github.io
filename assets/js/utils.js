@@ -6,11 +6,11 @@ var selected = null, // Object of the element to be moved
 function initDrag(el, parent) {
     // Store the object of the element which needs to be moved
     selected = el;
-    let $el = $(el); 
-    let rotation = $el.attr('style').replace(/.*(rotate\(.*deg\)).*/,'$1');
-    $el.css('transform', `${rotation} scale(1.05)`);
+    let parentEl = document.getElementById(parent);
+    let rotation = el.getAttribute('style').replace(/.*(rotate\(.*deg\)).*/,'$1');
+    el.style.transform = `${rotation} scale(1.05)`;
     el.classList.add('card--moving');
-    $el.appendTo(parent);
+    parentEl.appendChild(el);
     x_elem = x_pos - selected.offsetLeft;
     y_elem = y_pos - selected.offsetTop;
     
@@ -29,9 +29,8 @@ function dragElement(e) {
 // Destroy the object when we are done
 function emptySelection() {
     if (selected != null) {
-        let $el = $(selected); 
-        let rotation = $el.attr('style').replace(/.*(rotate\(.*deg\)).*/,'$1');
-        $el.css('transform', `${rotation} scale(1)`);
+        let rotation = selected.getAttribute('style').replace(/.*(rotate\(.*deg\)).*/,'$1');
+        selected.style.transform = `${rotation} scale(1)`;
         selected.classList.remove('card--moving');
     }
     selected = null;

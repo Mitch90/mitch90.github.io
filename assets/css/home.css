@@ -20,7 +20,8 @@ main {
     transition: font-variation-settings 0.3s;
 }
 
-.projects__list a:hover {
+.projects__list a:hover,
+.projects__list a.card--match {
     font-variation-settings: 'wght' var(--font-bold);
 }
 

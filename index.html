@@ -5,7 +5,7 @@ title: Selected Projects – Michele Invernizzi's Portfolio
     <div class="projects__list">
         {% assign projects = site.projects | sort: "order" %}
         {% for project in projects %}
-        <a href="{{ project.url }}">{{ project.title }}</a>
+        <a href="{{ project.url }}" data-order="{{ project.order }}">{{ project.title }}</a>
         {% unless forloop.last %}
         <span>&#x2014</span>
         {% endunless %}
