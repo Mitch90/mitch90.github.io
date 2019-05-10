@@ -10,11 +10,17 @@
         <link type="text/css" rel="stylesheet" href="{{ 'assets/css/home.css' | relative_url }}">
         {% elsif page.layout == 'project' %}
         <link type="text/css" rel="stylesheet" href="{{ 'assets/css/project.css' | relative_url }}">
+        {% else %}
+        <link type="text/css" rel="stylesheet" href="{{ 'assets/css/about.css' | relative_url }}">
         {% endif %}
         {% if page.layout == 'default' %}
         <script src="https://code.jquery.com/jquery-3.4.0.slim.min.js" integrity="sha256-ZaXnYkHGqIhqTbJ6MB4l9Frs/r7U4jlx7ir8PJYBqbI=" crossorigin="anonymous" defer></script>
         <script src="{{ 'assets/js/utils.js' | relative_url }}" defer></script>
+        {% if page.url == '/' %}
         <script src="{{ 'assets/js/home.js' | relative_url }}" defer></script>
+        {% else %}
+        <script src="{{ 'assets/js/about.js' | relative_url }}" defer></script>
+        {% endif %}
         {% else %}
         <script src="{{ 'assets/js/project.js' | relative_url }}" defer></script>
         {% endif %}

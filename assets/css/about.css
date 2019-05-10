@@ -1,0 +1,114 @@
+main {
+    width: 100%;
+    height: calc(100vh - var(--margin-optimized) - var(--margin) - 6rem);
+    padding-top: 6rem;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 1fr;
+}
+
+.base__regular {
+    font-variation-settings: 'wght' var(--font-regular);
+}
+
+.base__bold {
+    font-variation-settings: 'wght' var(--font-bold);
+}
+
+.base__italic {
+    font-style: italic;
+}
+
+.base__emoji {
+    font-size: 1.15rem;
+}
+
+.base__line {
+    fill: none;
+    stroke: var(--color-dark);
+}
+
+.base__line.line--dashed {
+    stroke-dasharray: 6, 6;
+}
+
+.base__line.line--thick {
+    stroke-width: 3px;
+}
+
+svg.base__interests,
+svg.interests {
+    height: 100%;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.interests__notes {
+    fill: var(--color-red);
+}
+
+.line--red {
+    fill: none;
+    stroke: var(--color-red);
+}
+
+svg.base__plans,
+svg.plans {
+    height: 100%;
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.plans__notes {
+    fill: var(--color-blue);
+}
+
+.plans__notes.strike {
+    text-decoration: line-through;
+}
+
+.about__card {
+    --margin-card: calc(var(--margin) / 2);
+    position: absolute;
+    height: calc(100% - 6rem);
+    cursor: grab;
+    border: 1px solid var(--color-dark);
+    border-radius: 2px;
+    box-shadow: 0px 4px 8px rgba(100,100,100,0.5);
+    transform-origin: center;
+    transition-property: left, top, transform;
+    transition-duration: 0.7s;
+    transition-timing-function: ease;
+}
+
+.about__card .card__background {
+    width: calc(100% - var(--margin-card) * 2);
+    height: calc(100% - var(--margin-card) * 2);
+    position: relative;
+    padding: var(--margin-card);
+    background-color: var(--color-light);
+    opacity: 0.5;
+    display: flex;
+}
+
+.card__interests {
+    width: calc(60%);
+    top: 6rem;
+    left: 1rem;
+}
+
+.card__interests h3 {
+    position: absolute;
+    top: var(--margin-card);
+    right: calc(var(--margin-card) * 1.25);
+    color: var(--color-red);
+}
+
+.card__interests h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 2px solid var(--color-red);
+}
