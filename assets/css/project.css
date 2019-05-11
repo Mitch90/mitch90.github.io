@@ -57,6 +57,10 @@ h2 {
     border-radius: 2px;
 }
 
+.external--link.link--thick {
+    border: 2px solid var(--color-dark);
+}
+
 header .external--link::after {
     content: "";
     position: absolute;

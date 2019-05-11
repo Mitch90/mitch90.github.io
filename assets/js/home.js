@@ -6,6 +6,7 @@ $(function () {
     const dimensionsArray = [margin, margin, viewportWidth - margin, viewportHeight - margin];
     const $cards = $('.project__card');
     const $projects = $('.projects__list a');
+    let resizeTimer;
     // console.log(viewportWidth, viewportHeight);
 
     // get random points to throw the cards
@@ -21,20 +22,22 @@ $(function () {
             "transition-delay": `${i * .05}s`
         });
     });
-    $cards.on("mousedown", function (ev) {
+    $cards.on("touchstart mousedown", function (ev) {
         ev.preventDefault();
-        initDrag(ev.currentTarget, "home");
+        initDrag(ev, ev.currentTarget, "home");
     }).on("mouseover", function (ev) {
         let order = ev.currentTarget.getAttribute('data-order');
         let $project = document.querySelector(`.projects__list a[data-order='${order}']`);
-        
+
         $project.classList.add('card--match');
     }).on("mouseleave", function (ev) {
         let order = ev.currentTarget.getAttribute('data-order');
         let $project = document.querySelector(`.projects__list a[data-order='${order}']`);
-        
+
         $project.classList.remove('card--match');
     });
+    document.ontouchmove = dragElement;
+    document.ontouchend = emptySelection;
     document.onmousemove = dragElement;
     document.onmouseup = emptySelection;
 
@@ -50,10 +53,30 @@ $(function () {
     }).on("mouseleave", function (ev) {
         let order = ev.currentTarget.getAttribute('data-order');
         let $card = document.querySelector(`.project__card[data-order='${order}']`);
-        let rotation = $card.getAttribute('style').replace(/.*(rotate\(.*deg\)).*/,'$1');
+        let rotation = $card.getAttribute('style').replace(/.*(rotate\(.*deg\)).*/, '$1');
         $card.style.transform = `${rotation} scale(1)`;
         $card.classList.remove('card--moving');
     });
+
+    // Credits to Chris Coyier https://css-tricks.com/snippets/jquery/done-resizing-event/ 
+    window.onresize = function (e) {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function () {
+            const newViewportWidth = $(window).width();
+            const newViewportHeight = $(window).height();
+
+            $cards.each(function (i, el) {
+                const positionTop = +el.getAttribute('style').replace(/left:.*top: (.*)px; transform.*/, '$1');
+                const positionLeft = +el.getAttribute('style').replace(/left: (.*)px; top.*/, '$1');
+                
+                if (newViewportWidth < positionLeft || newViewportHeight < positionTop) {
+                    el.style.left = newViewportWidth < positionLeft ? `${newViewportWidth - 150}px` : `${positionLeft}px`;
+                    el.style.top = newViewportHeight < positionTop ? `${newViewportHeight - 150}px` : `${positionTop}px`;
+                }
+            });
+
+        }, 250);
+    }
 
     function makeSamples() {
         let newSamples = [...samples(dimensionsArray, $cards.length)];

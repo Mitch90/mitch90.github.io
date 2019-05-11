@@ -5,6 +5,14 @@ nav {
     justify-content: space-between;
 }
 
+nav > div {
+    max-width: 60%;
+}
+
+nav h3 span {
+    transition: color 0.3s;
+}
+
 nav h4 {
     font-size: 16px;
     font-variation-settings: 'wght' var(--font-regular);

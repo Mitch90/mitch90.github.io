@@ -1,9 +1,11 @@
 main {
+    /* --main-height: calc(100vh - var(--margin-optimized) - var(--margin) - 6rem); */
+    --main-height: 585px;
     width: 100%;
-    height: calc(100vh - var(--margin-optimized) - var(--margin) - 6rem);
-    padding-top: 6rem;
+    height: var(--main-height);
+    padding-top: 8rem;
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 74% 26%;
     grid-template-rows: 1fr;
 }
 
@@ -43,6 +45,22 @@ svg.interests {
     grid-row: 1 / span 1;
 }
 
+.base__trees {
+    transform: translateX(-67px);
+}
+
+.base__second-part {
+    transform: translateX(-120px);
+}
+
+.interests__special {
+    transform: translate(-70px, -14px);
+}
+
+.interests__second-part {
+    transform: translateX(-120px);
+}
+
 .interests__notes {
     fill: var(--color-red);
 }
@@ -67,48 +85,165 @@ svg.plans {
     text-decoration: line-through;
 }
 
+svg.interests,
+svg.plans {
+    will-change: clip-path;
+}
+
 .about__card {
     --margin-card: calc(var(--margin) / 2);
     position: absolute;
-    height: calc(100% - 6rem);
+    height: var(--main-height);
     cursor: grab;
     border: 1px solid var(--color-dark);
     border-radius: 2px;
-    box-shadow: 0px 4px 8px rgba(100,100,100,0.5);
-    transform-origin: center;
-    transition-property: left, top, transform;
-    transition-duration: 0.7s;
-    transition-timing-function: ease;
+    box-shadow: 0px 4px 8px rgba(142,142,142,0.5);
+    transform-origin: top left;
+    transform: rotate(10deg);
 }
 
-.about__card .card__background {
-    width: calc(100% - var(--margin-card) * 2);
-    height: calc(100% - var(--margin-card) * 2);
-    position: relative;
-    padding: var(--margin-card);
-    background-color: var(--color-light);
-    opacity: 0.5;
-    display: flex;
+.about__card.card--moving {
+    cursor: grabbing;
 }
 
 .card__interests {
-    width: calc(60%);
-    top: 6rem;
-    left: 1rem;
+    width: var(--main-height);
+    top: 12rem;
+    left: -479px;
+}
+
+.card__plans {
+    width: calc(var(--main-height) / 2);
+    top: -30rem;
+    right: -300px;
+}
+
+.about__card h3 {
+    position: absolute;
 }
 
 .card__interests h3 {
-    position: absolute;
     top: var(--margin-card);
     right: calc(var(--margin-card) * 1.25);
     color: var(--color-red);
 }
 
-.card__interests h3::after {
+.card__plans h3 {
+    bottom: var(--margin-card);
+    left: calc(var(--margin-card) * 1.25);
+    color: var(--color-blue);
+}
+
+.about__card h3::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
+}
+
+.card__interests h3::after {
     border-bottom: 2px solid var(--color-red);
+}
+
+.card__plans h3::after {
+    border-bottom: 2px solid var(--color-blue);
+}
+
+.activities {
+    display: flex;
+    margin-top: 10rem;
+}
+
+.activities__column {
+    width: calc(24%);
+    margin-right: calc((100% - 24% * 3) / 3 );
+}
+
+.activities__column:nth-child(2) {
+    margin-top: 6rem;
+}
+
+.activities__column:nth-child(3) {
+    margin-top: 12rem;
+}
+
+.activities__column h3 {
+    margin-bottom: 1rem;
+}
+
+.activities__column ul {
+    list-style: none;
+    margin-bottom: 3rem;
+}
+
+.activities__column li {
+    margin: 0.6rem 0;
+}
+
+.activities__column p {
+    margin: 0.1rem 0;
+}
+
+.activity__info {
+    font-style: italic;
+}
+
+/* big phones */
+@media (min-width: 576px) {
+    html {
+        background-color: aquamarine;
+    }
+}
+
+/* tablets */
+@media (min-width: 768px) {
+    html {
+        background-color: khaki;
+    }
+}
+
+/* desktops */
+@media (min-width: 992px) {
+    html {
+        background-color: lightcoral;
+    }
+}
+
+/* big desktops */
+@media (min-width: 1200px) {
+    html {
+        background-color: white;
+    }
+    main {
+        --main-height: 715px;
+        padding-top: 6rem;
+        grid-template-columns: 60% 40%;
+    }
+    .card__plans {
+        right: -315px;
+        top: 4.5rem;
+    }
+    .base__trees {
+        transform: translateX(0);
+    }
+    .base__second-part {
+        transform: translateX(0);
+    }
+    .interests__special {
+        transform: translate(0,0);
+    }
+    .interests__second-part {
+        transform: translateX(0);
+    }
+    .card__interests {
+        left: -575px;
+    }
+}
+
+/* huge desktops */
+@media (min-width: 1800px) {
+    html {
+        background-color: lightgreen;
+    }
 }

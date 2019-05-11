@@ -15,7 +15,6 @@ html {
 body {
     margin: var(--margin-optimized) var(--margin) var(--margin);
     overflow-x: hidden;
-    background-color: var(--color-light);
 }
 
 h3, h4, h5, ul {
@@ -24,11 +23,11 @@ h3, h4, h5, ul {
 }
 
 h3 {
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 h5 {
-    font-size: 16px;
+    font-size: 1rem;
     font-variation-settings: 'wght' var(--font-regular);
     text-transform: uppercase;
 }
@@ -42,4 +41,22 @@ a {
 ::selection {
     color: var(--color-light);
     background-color: var(--color-dark);
+}
+
+span.show--small {
+    display: inline;
+}
+
+span.show--big {
+    display: none;
+}
+
+@media (min-width: 576px) {
+    span.show--small {
+        display: none;
+    }
+    
+    span.show--big {
+        display: inline;
+    }
 }
