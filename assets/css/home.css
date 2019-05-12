@@ -34,6 +34,17 @@ main {
     display: none;
 }
 
+footer {
+    position: fixed;
+    bottom: var(--margin);
+    z-index: -1;
+}
+
+footer p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
 /* big phones */
 @media (min-width: 576px) {
     .projects__list {

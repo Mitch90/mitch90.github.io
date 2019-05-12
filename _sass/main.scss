@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'Inter var';
+    font-weight: 100 900;
+    font-style: normal;
+    font-named-instance: 'Regular';
+    src: url("/assets/fonts/Inter-upright.var.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Inter var';
+    font-weight: 100 900;
+    font-style: italic;
+    font-named-instance: 'Italic';
+    src: url("/assets/fonts/Inter-italic.var.woff2") format("woff2");
+}
+
 html {
     --color-dark: #000000;
     --color-light: #ffffff;
