@@ -3,9 +3,9 @@ main {
     --main-height: 585px;
     width: 100%;
     height: var(--main-height);
-    padding-top: 8rem;
+    padding-top: 12rem;
     display: grid;
-    grid-template-columns: 74% 26%;
+    grid-template-columns: 1fr 480px 1fr;
     grid-template-rows: 1fr;
 }
 
@@ -38,125 +38,38 @@ main {
     stroke-width: 3px;
 }
 
-svg.base__interests,
-svg.interests {
-    height: 100%;
-    grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
-}
-
-.base__trees {
-    transform: translateX(-67px);
-}
-
-.base__second-part {
-    transform: translateX(-120px);
-}
-
-.interests__special {
-    transform: translate(-70px, -14px);
-}
-
-.interests__second-part {
-    transform: translateX(-120px);
-}
-
-.interests__notes {
-    fill: var(--color-red);
-}
-
-.line--red {
-    fill: none;
-    stroke: var(--color-red);
-}
-
-svg.base__plans,
-svg.plans {
+svg.base__interests {
     height: 100%;
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
 }
 
-.plans__notes {
-    fill: var(--color-blue);
+.base__trees {
+    transform: translate(-67px, 6px);
 }
 
-.plans__notes.strike {
-    text-decoration: line-through;
+.base__second-part {
+    transform: translate(-120px, 0);
 }
 
-svg.interests,
-svg.plans {
-    will-change: clip-path;
+g.lower--small {
+    transform: translate(0, 19.2px);
 }
 
+.interests,
+.base__plans,
+.plans,
 .about__card {
-    --margin-card: calc(var(--margin) / 2);
-    position: absolute;
-    height: var(--main-height);
-    cursor: grab;
-    border: 1px solid var(--color-dark);
-    border-radius: 2px;
-    box-shadow: 0px 4px 8px rgba(142,142,142,0.5);
-    transform-origin: top left;
-    transform: rotate(10deg);
-}
-
-.about__card.card--moving {
-    cursor: grabbing;
-}
-
-.card__interests {
-    width: var(--main-height);
-    top: 12rem;
-    left: -479px;
-}
-
-.card__plans {
-    width: calc(var(--main-height) / 2);
-    top: -30rem;
-    right: -300px;
-}
-
-.about__card h3 {
-    position: absolute;
-}
-
-.card__interests h3 {
-    top: var(--margin-card);
-    right: calc(var(--margin-card) * 1.25);
-    color: var(--color-red);
-}
-
-.card__plans h3 {
-    bottom: var(--margin-card);
-    left: calc(var(--margin-card) * 1.25);
-    color: var(--color-blue);
-}
-
-.about__card h3::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-}
-
-.card__interests h3::after {
-    border-bottom: 2px solid var(--color-red);
-}
-
-.card__plans h3::after {
-    border-bottom: 2px solid var(--color-blue);
+    display: none;
 }
 
 .activities {
     display: flex;
-    margin-top: 10rem;
+    margin-top: calc(100vh - 585px - var(--margin-optimized) - var(--margin) - 6rem);
 }
 
 .activities__column {
-    width: calc(24%);
+    width: 292px;
     margin-right: calc((100% - 24% * 3) / 3 );
 }
 
@@ -191,59 +104,196 @@ svg.plans {
 
 /* big phones */
 @media (min-width: 576px) {
-    html {
-        background-color: aquamarine;
-    }
+    
 }
 
 /* tablets */
 @media (min-width: 768px) {
-    html {
-        background-color: khaki;
+    main {
+        --main-height: 585px;
+        grid-template-columns: 72% 28%;
+    }
+    .interests,
+    .base__plans,
+    .plans,
+    .about__card {
+        display: block;
+    }
+
+    g.lower--small {
+        transform: translate(0,0);
+    }
+
+    tspan.show--small {
+        display: none;
+    }
+
+    svg.base__interests,
+    svg.interests {
+        height: 100%;
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+
+    .interests__special {
+        transform: translate(-70px, -14px);
+    }
+    
+    .interests__second-part {
+        transform: translate(-120px, 0);
+    }
+    
+    .interests__notes {
+        fill: var(--color-red);
+    }
+    
+    .line--red {
+        fill: none;
+        stroke: var(--color-red);
+    }
+    
+    svg.base__plans,
+    svg.plans {
+        height: 100%;
+        grid-column: 2 / span 1;
+        grid-row: 1 / span 1;
+    }
+    
+    .plans__notes {
+        fill: var(--color-blue);
+    }
+    
+    .plans__notes.strike {
+        text-decoration: line-through;
+    }
+    
+    svg.interests,
+    svg.plans {
+        will-change: clip-path;
+    }
+    
+    .about__card {
+        --margin-card: calc(var(--margin) / 2);
+        position: absolute;
+        height: var(--main-height);
+        cursor: grab;
+        border: 1px solid var(--color-dark);
+        border-radius: 2px;
+        box-shadow: 0px 4px 8px rgba(142,142,142,0.5);
+        transform-origin: top left;
+        transform: rotate(10deg);
+    }
+    
+    .about__card.card--moving {
+        cursor: grabbing;
+    }
+    
+    .card__interests {
+        width: var(--main-height);
+        top: 15rem;
+        left: -479px;
+    }
+    
+    .card__plans {
+        width: calc(var(--main-height) / 2);
+        top: -21rem;
+        right: -300px;
+    }
+    
+    .about__card h3 {
+        position: absolute;
+    }
+    
+    .card__interests h3 {
+        top: var(--margin-card);
+        right: calc(var(--margin-card) * 1.25);
+        color: var(--color-red);
+    }
+    
+    .card__plans h3 {
+        bottom: var(--margin-card);
+        left: calc(var(--margin-card) * 1.25);
+        color: var(--color-blue);
+    }
+    
+    .about__card h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+    
+    .card__interests h3::after {
+        border-bottom: 2px solid var(--color-red);
+    }
+    
+    .card__plans h3::after {
+        border-bottom: 2px solid var(--color-blue);
+    }
+    .activities {
+        margin-top: 9rem;
     }
 }
 
 /* desktops */
 @media (min-width: 992px) {
-    html {
-        background-color: lightcoral;
+    .activities__column {
+        width: 345px;
+        margin-right: calc((100% - 24% * 3) / 3 );
+    }
+    .card__plans {
+        top: -30rem;
     }
 }
 
 /* big desktops */
 @media (min-width: 1200px) {
-    html {
-        background-color: white;
-    }
     main {
         --main-height: 715px;
         padding-top: 6rem;
-        grid-template-columns: 60% 40%;
+        grid-template-columns: 64% 36%;
     }
     .card__plans {
-        right: -315px;
         top: 4.5rem;
+        right: -315px;
     }
     .base__trees {
-        transform: translateX(0);
+        transform: translate(0, 0);
     }
     .base__second-part {
-        transform: translateX(0);
+        transform: translate(0, 0);
     }
     .interests__special {
         transform: translate(0,0);
     }
     .interests__second-part {
-        transform: translateX(0);
+        transform: translate(0, 0);
     }
     .card__interests {
+        top: 12rem;
         left: -575px;
+    }
+    .activities {
+        margin-top: 10rem;
+    }
+    .activities__column {
+        width: 380px;
     }
 }
 
 /* huge desktops */
 @media (min-width: 1800px) {
-    html {
-        background-color: lightgreen;
+    main {
+        width: 75vw;
+        margin: 0 auto;
+        grid-template-columns: 1000px 1fr;
+    }
+    .card__plans {
+        right: -180px;
+    }
+    .activities {
+        width: 55vw;
+        margin: 10rem auto 0;
     }
 }

@@ -42,10 +42,10 @@
     window.onresize = function (e) {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function () {
-            const $interests = document.querySelector('.interests');
-            const $interestsCard = document.querySelector('.card__interests');
-            const $plans = document.querySelector('.plans');
-            const $plansCard = document.querySelector('.card__plans');
+            $interests = document.querySelector('.interests');
+            $interestsCard = document.querySelector('.card__interests');
+            $plans = document.querySelector('.plans');
+            $plansCard = document.querySelector('.card__plans');
             calculateMask($interests, $interestsCard);
             calculateMask($plans, $plansCard);
         }, 250);

@@ -218,7 +218,28 @@ a.pagination__right:hover .pagination__arrow {
     left: 4px;
 }
 
-/* desktop */
+/* big phones */
+@media (min-width: 576px) {
+    body {
+        background-color: aquamarine;
+    }
+}
+
+/* tablets */
+@media (min-width: 768px) {
+    body {
+        background-color: khaki;
+    }
+}
+
+/* desktops */
+@media (min-width: 992px) {
+    body {
+        background-color: lightcoral;
+    }
+}
+
+/* big desktop */
 @media (min-width: 1200px) {
     .section__title h3 {
         margin-top: calc(1.55rem + 0.2vw);
@@ -241,6 +262,9 @@ a.pagination__right:hover .pagination__arrow {
 
 /* huge desktop */
 @media (min-width: 1800px) {
+    header {
+        height: calc(80vh - var(--margin-optimized) * 2 - 0.8rem);
+    }
     .section__title h3 {
         margin-top: 1.7rem;
         font-size: 1.1rem;
