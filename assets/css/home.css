@@ -5,10 +5,19 @@ body {
 main {
     width: 100%;
     height: calc(100vh - var(--margin-optimized) - var(--margin));
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 
 .projects__list {
@@ -18,6 +27,7 @@ main {
 }
 
 .projects__list a {
+    -webkit-transition: font-variation-settings 0.3s;
     transition: font-variation-settings 0.3s;
 }
 
@@ -62,21 +72,35 @@ footer p {
         width: calc(30vmin - var(--margin-card) * 2);
         height: calc(30vmin - var(--margin-card) * 2);
         padding: var(--margin-card);
+        cursor: -webkit-grab;
         cursor: grab;
         border: 1px solid var(--color-dark);
         border-radius: 2px;
-        box-shadow: 0px 4px 8px rgba(142,142,142,0.5);
+        -webkit-box-shadow: 0px 4px 8px rgba(142,142,142,0.5);
+                box-shadow: 0px 4px 8px rgba(142,142,142,0.5);
         background-color: var(--color-light);
-        transform-origin: center;
+        -webkit-transform-origin: center;
+                transform-origin: center;
+        -webkit-transition-property: left, top, -webkit-transform;
+        transition-property: left, top, -webkit-transform;
         transition-property: left, top, transform;
-        transition-duration: 0.7s;
-        transition-timing-function: ease;
+        transition-property: left, top, transform, -webkit-transform;
+        -webkit-transition-duration: 0.7s;
+                transition-duration: 0.7s;
+        -webkit-transition-timing-function: ease;
+                transition-timing-function: ease;
     }
     
     .project__card.card--moving {
+        -webkit-transition-property: -webkit-transform;
+        transition-property: -webkit-transform;
         transition-property: transform;
-        transition-duration: 0.4s;
-        transition-timing-function: ease;
+        transition-property: transform, -webkit-transform;
+        -webkit-transition-duration: 0.4s;
+                transition-duration: 0.4s;
+        -webkit-transition-timing-function: ease;
+                transition-timing-function: ease;
+        cursor: -webkit-grabbing;
         cursor: grabbing;
     }
     

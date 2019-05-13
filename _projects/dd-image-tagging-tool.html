@@ -13,3 +13,33 @@ link:
 thumbnail: dd-image-tagging.png
 order: 5
 ---
+<section class="project__summary">
+  <div class="summary__container">
+      <p>The image tagging tool is a javascript interface built on top of the <a class="external--link link--thick" href="https://clarifai.com/developer/guide/" target="_blank">Clarifai API</a> that let users tag a series of images with one of the image content recognition models developed by Clarifai.</p>
+  </div>
+</section>
+<section class="project__content">
+  <div class="section__title">
+    <h3>Process</h3>
+  </div>
+  <div class="section__body">
+    <p>For information designers and social scientists working with <a class="external--link" href="https://mitpress.mit.edu/books/digital-methods" target="_blank">Digital Methods</a>, content recognition algorithms can be very helpful in categorizing large corpuses of images. They can be employed, for example, as a way to place images in a space based on their content similarity, or to roughly  categorize and filter only the images relevant to the research.</p>
+    <p>This small project comes from the need of having an easy interface where researchers could use a content recognition algorithm without the burden of having to learn how to code or how to call an API. While inside the lab we had a routine set up to perform the various operations needed to label a corpus of images, this was not ideal in our teaching activities. It implied a series of scripts that took time and know-how to learn and made the passage of knowledge, especially during workshops, challenging and often not very effective.</p>
+    <p>The tool is specifically designed to work in combination with spreadsheet softwares as they are, most of the time, what comes before and after in this kind of research processes. This is why the interface accepts only a list of image urls in the form of a <a class="external--link" href="https://en.wikipedia.org/wiki/Comma-separated_values" target="_blank">csv</a> file and outputs another csv file with the results of the algorithm.</p>
+    <p class="paragraph--new">Clarifai was chosen for various reasons:</p>
+    <ul>
+      <li>it is one of the leading artificial intelligence companies specialized in computer vision;</li>
+      <li>their API is easy to setup and is free within reasonable limits;</li>
+      <li>it has a pool of categorization models that other companies lack.</li>
+    </ul>
+  </div>
+</section>
+<section class="project__content">
+  <div class="section__title">
+    <h3>Thoughts</h3>
+  </div>
+  <div class="section__body">
+    <p>The image tagging tool works well for its intended use, but it could be greatly improved. Its aim is really focused on the specific task it was created for, making it less flexible to change. For example, a research question that requires an output formatted differently would render the tool useless.</p>
+    <p>As future developments we could also improve the inputs it handles by also excepting images directly instead of just csvs.</p>
+  </div>
+</section>

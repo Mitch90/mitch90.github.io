@@ -6,6 +6,12 @@
     const $cards = $('.about__card');
     let resizeTimer;
 
+    if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+        console.log('Safari is a terrible browser, please switch to either Chrome or Firefox');
+        $interestsCard.style.display = 'none';
+        $plansCard.style.display = 'none';
+    }
+
     calculateMask($interests, $interestsCard);
     calculateMask($plans, $plansCard);
 
@@ -71,16 +77,20 @@ function calculateMask($annotations, $card) {
     const cardX4 = cardDimensions.x;
     const cardY4 = cardDimensions.bottom - cardVerticalDelta;
 
-    const maskX1 = cardX1 - annotationsDimensions.x;
-    const maskY1 = cardY1 - annotationsDimensions.y;
-    const maskX2 = cardX2 - annotationsDimensions.x;
-    const maskY2 = cardY2 - annotationsDimensions.y;
-    const maskX3 = cardX3 - annotationsDimensions.x;
-    const maskY3 = cardY3 - annotationsDimensions.y;
-    const maskX4 = cardX4 - annotationsDimensions.x;
-    const maskY4 = cardY4 - annotationsDimensions.y;
+    const maskX1 = round(cardX1 - annotationsDimensions.x, 0);
+    const maskY1 = round(cardY1 - annotationsDimensions.y, 0);
+    const maskX2 = round(cardX2 - annotationsDimensions.x, 0);
+    const maskY2 = round(cardY2 - annotationsDimensions.y, 0);
+    const maskX3 = round(cardX3 - annotationsDimensions.x, 0);
+    const maskY3 = round(cardY3 - annotationsDimensions.y, 0);
+    const maskX4 = round(cardX4 - annotationsDimensions.x, 0);
+    const maskY4 = round(cardY4 - annotationsDimensions.y, 0);
     // console.log(annotationsDimensions.y, cardY2);
 
-    $annotations.setAttribute("style", `clip-path:polygon(${maskX1}px ${maskY1}px, ${maskX2}px ${maskY2}px, ${maskX3}px ${maskY3}px, ${maskX4}px ${maskY4}px);`);
+    $annotations.style.clipPath = `polygon(${maskX1}px ${maskY1}px, ${maskX2}px ${maskY2}px, ${maskX3}px ${maskY3}px, ${maskX4}px ${maskY4}px)`;
 
+}
+
+function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
