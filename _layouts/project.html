@@ -1,0 +1,58 @@
+---
+layout: default
+---
+{% capture the_collection %}{{page.collection}}{% endcapture %}
+{% if page.collection %}
+    {% assign document = site[the_collection] | sort: 'order'  %}
+    {% assign length = document | size | minus: 1  %}
+{% endif %}
+{% for links in document  %}
+    {% if links.title == page.title %}
+        {% unless forloop.first %}
+            {% assign prevurl = prev.url %}
+        {% endunless %}
+        {% unless forloop.last %}
+            {% assign next = document[forloop.index] %}
+            {% assign nexturl = next.url %}
+        {% endunless %}
+    {% endif %}
+    {% assign prev = links %}
+{% endfor %}
+<header>
+    <div class="header__container">
+        <h1>{{ page.title }}</h1>
+        <h2>{{ page.subtitle }}</h2>
+        <div class="info__container">
+            <div class="info">
+                <h3>With</h3>
+                {% for name in page.team %}
+                <p>{{ name }}</p>
+                {% endfor %}
+            </div>
+            <div class="info">
+                <h3>Year</h3>
+                <p>{{ page.year }}</p>
+            </div>
+            <div class="info">
+                <h3>Role</h3>
+                <p>{{ page.role }}</p>
+            </div>
+            <div class="info">
+                <h3>Technology</h3>
+                {% for tech in page.technology %}
+                <p>{{ tech }}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <a href="{{ page.link.url }}" target="_blank" class="project__link external--link">{{ page.link.title }}</a>
+    </div>
+</header>
+<main>
+    {{ content }}
+</main>
+<footer>
+    <div class="pagination__container">
+        <a class="pagination__left" href="{% if prevurl %}{{ prevurl | relative_url }}{% else %}{{ document[length].url | relative_url }}{% endif %}"><span class="pagination__arrow">&#x27F5</span><span class="pagination__text">Previous project</span></a>
+        <a class="pagination__right" href="{% if nexturl %}{{ nexturl | relative_url }}{% else %}{{ document[0].url | relative_url }}{% endif %}"><span class="pagination__text">Next project</span><span class="pagination__arrow">&#x27F6</span></a>
+    </div>
+</footer>

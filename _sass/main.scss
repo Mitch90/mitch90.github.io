@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'Inter var';
+    font-weight: 100 900;
+    font-style: normal;
+    font-named-instance: 'Regular';
+    src: url("/assets/fonts/Inter-upright.var.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: 'Inter var';
+    font-weight: 100 900;
+    font-style: italic;
+    font-named-instance: 'Italic';
+    src: url("/assets/fonts/Inter-italic.var.woff2") format("woff2");
+}
+
+html {
+    --color-dark: #000000;
+    --color-light: #ffffff;
+    --color-blue: #4469DD;
+    --color-red: #F53D3D;
+    font-family: "Inter var", "Helvetica", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    --font-regular: 400;
+    --font-bold: 700;
+    --margin: 20px;
+    --margin-optimized: calc(var(--margin) * 0.8);
+}
+
+body {
+    margin: var(--margin-optimized) var(--margin) var(--margin);
+    overflow-x: hidden;
+}
+
+h3, h4, h5, ul {
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    font-size: 1rem;
+}
+
+h5 {
+    font-size: 1rem;
+    font-variation-settings: 'wght' var(--font-regular);
+    text-transform: uppercase;
+}
+
+a {
+    color: var(--color-dark);
+    text-decoration: none;
+    font-variation-settings: 'wght' var(--font-regular);
+}
+
+::selection {
+    color: var(--color-light);
+    background-color: var(--color-dark);
+}
+
+span.show--small {
+    display: inline;
+}
+
+span.show--big {
+    display: none;
+}
+
+@media (min-width: 576px) {
+    span.show--small {
+        display: none;
+    }
+    
+    span.show--big {
+        display: inline;
+    }
+}

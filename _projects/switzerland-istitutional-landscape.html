@@ -1,0 +1,69 @@
+---
+title: Switzerland's institutional landscape 1933–1980
+subtitle: An analysis of administrative detention through data visualization
+team:
+  - Independent Expert Commission
+  - Tommaso Elli
+  - Andrea Benedetti
+  - Michele Mauri
+year: 2017
+role: design and development
+technology:
+  - d3.js
+  - node.js
+  - OpenRefine
+link:
+  title: toxicwasteroutes.github.io
+  url: "https://toxicwasteroutes.github.io/"
+thumbnail: switzerland.png
+order: 3
+---
+<section class="project__summary">
+  <div class="summary__container">
+      <p>This interactive report, developed by DensityDesign for the Swiss <a class="external--link link--thick" href="https://www.uek-administrative-versorgungen.ch/home" target="_blank">Independent Expert Commission</a> (IEC) on Administrative Detention, was designed to display part of the research done by the commission in order to both present their work to the general public in Switzerland as well as to make it available to other researchers interested in the study of the phenomenon.</p>
+  </div>
+</section>
+<section class="project__content">
+  <div class="section__title">
+    <h3>Process</h3>
+  </div>
+  <div class="section__body">
+    <p>As most information design projects, a considerable part of the work was dedicated to get the data ready to be used. Namely, since IEC’s researchers had to collect and categorize a set of registers made by different institutions in different points in time from 1933 until 1980, all the data had to be reformatted and made uniform.</p>
+    <p>Here in particular the main challenge was to assign a unique id to each institution because, in those 60 years, some changed typology, location or were either combined in a bigger cluster or split up in sub-institutions. Moreover, the administrative boundaries of Switzerland changed through time, with the creation or evolution of its cantons. Thanks to the combined effort of the research lab and the commission we were able to reconcile each institute with an id and a historical path.</p>
+    <p class="paragraph--new">In terms of design, the aim of the report was two-fold: on one side it needed to inform Swiss citizens about the use of administrative detention up to 1981, while also providing a reference for other research groups and scholars for their publications. For this reason the final website was designed to keep a connection between the narrative sphere and the academic sphere by having each element of all interactive visualizations linked in a glossary to the original data, ready for citation.</p>
+    <div class="project__video">
+      <video autoplay="autoplay" loop="loop" muted="muted" onstart="this.play();" onended="this.play();">
+        <source src="{{ '/assets/videos/swiss01.mp4' | relative_url }}" type="video/mp4">
+        <p>Your browser doesn't support HTML5 video. Here is a <a href="{{ '/assets/videos/swiss01.mp4' | relative_url }}">link to the video</a> instead.</p>
+      </video>
+    </div>
+    <p>This element was key for both partners because it can be a challenge to present the original data behind an information visualization artifact in a way that is usable by others than the creators of said artifact. Thus, we designed <a class="external--link" href="https://www.uek-administrative-versorgungen.ch/interactivereport/en/glossaries/index.html" target="_blank">two glossaries</a> with a visual interface that helps navigate and contextualize the data:</p>
+    <ul>
+      <li>a glossary of institutions, which lists all structures that where at some point used as detention facilities while showing their geographical location and their evolution in time;</li>
+      <li>a glossary of the legal framework, which helps to place in context how laws, acts, etc. with different scopes (cantonal, federal, international) and in different cantons affected the phenomenon throughout its history.</li>
+    </ul>
+    <p>If the need for a source of citation was very clear from the commission requests, much freedom was given to us in terms of what should – or would be interesting to – be shown in the report. Since the early stages of the project then, numerous hypotheses and explorations were iterated in close collaboration with them to decide what, how and in which order was best to present the data available.</p>
+    <p>One thing that really emerged was that geography – by being a proxy of cultural differences – was a major component in the administrative detention’s history, both in how it affected the distribution and characteristics of the institutions as well as in the relationship between different facilities.</p>
+    <p class="paragraph--new">The final report follows a <a class="external--link" href="https://pudding.cool/process/responsive-scrollytelling/" target="_blank">scrollytelling</a> approach with interactive visualizations that are introduced and evolve with the scrolling of a textual explanation. One of the design challenges was to represent all the institutions geographically without aggregating the ones that belonged to the same city or anyhow too close together: they needed to be shown singularly to emphasize the breadth of the phenomenon as well as the existing patterns between their location and their typology, religious affiliation and accepted genders, while keeping the visualization as legible as possible. We ended up with an acceptable compromise where institutions are slightly repositioned geographically every time they overlap.</p>
+    <div class="project__video">
+      <video autoplay="autoplay" loop="loop" muted="muted" onstart="this.play();" onended="this.play();">
+        <source src="{{ '/assets/videos/swiss02.mp4' | relative_url }}" type="video/mp4">
+        <p>Your browser doesn't support HTML5 video. Here is a <a href="{{ '/assets/videos/swiss02.mp4' | relative_url }}">link to the video</a> instead.</p>
+      </video>
+    </div>
+  </div>
+</section>
+<section class="project__content">
+  <div class="section__title">
+    <h3>Thoughts</h3>
+  </div>
+  <div class="section__body">
+    <p>The interactive report was very well received by the members of the commission as well as their scientific community and it’s now touring (at the time of writing, spring 2019) around Switzerland in conferences and events.</p>
+    <p>That said, some improvements could be added as potential future developments, mainly in the design of the interaction and the affordance of visualizations:</p>
+    <ul>
+      <li>some of the more abstract visualizations (especially the matrix) take quite a long time to be interpreted so they sort of break the flow of the narration;</li>
+      <li>sometimes it’s still not clear enough that the user can interact with certain elements.</li>
+    </ul>
+    <p>We tried to limit these issues by providing examples and explanation boxes in the text, but we could potentially find better solutions that don’t need to interrupt the narrative structure.</p>
+  </div>
+</section>
