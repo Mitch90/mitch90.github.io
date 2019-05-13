@@ -62,6 +62,8 @@ h2 {
 .project__link {
     font-size: 1rem;
     padding: 0.5rem 0.8rem;
+    display: block;
+    text-align: center;
 }
 
 .project__link::after {
@@ -273,6 +275,8 @@ a.pagination__right:hover .pagination__arrow {
     }
     .project__link {
         font-size: 1.6rem;
+        display: inline;
+        text-align: left;
     }
     .project__link::after {
         content: "";
