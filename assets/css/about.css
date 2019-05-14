@@ -4,7 +4,7 @@ main {
     height: var(--main-height);
     padding-top: 20vh;
     display: grid;
-    grid-template-columns: 116%;
+    grid-template-columns: 116vw;
     grid-template-rows: 1fr;
 }
 
