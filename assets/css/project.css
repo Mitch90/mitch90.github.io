@@ -22,7 +22,7 @@ header {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     font-variation-settings: 'wght' var(--font-regular);
     margin: 0;
 }
@@ -255,7 +255,6 @@ a.pagination__right:hover .pagination__arrow {
     h1 {
         margin-top: 8rem;
     }
-    
 }
 
 /* big phones */
