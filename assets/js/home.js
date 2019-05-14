@@ -75,6 +75,19 @@ $(function () {
                 }
             });
 
+            const $int = document.getElementById('interaction');
+            const $inf = document.getElementById('information');
+            const $job = document.querySelector('nav h4');
+            let intPosition = $int.getBoundingClientRect().left;
+            let infPosition = $inf.getBoundingClientRect().left;
+            $int.style.left = 0;
+            $inf.style.left = 0;
+            let distance = infPosition - intPosition;
+            $job.onmouseenter = function () {
+                $int.style.left = distance + 'px';
+                $inf.style.left = -distance + 'px';
+            };
+
         }, 250);
     }
 

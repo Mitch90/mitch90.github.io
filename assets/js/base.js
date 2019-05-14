@@ -21,24 +21,11 @@
     $job.onmouseenter = function () {
         $int.style.left = distance + 'px';
         $inf.style.left = -distance + 'px';
-
     };
     $job.onmouseleave = function () {
         $int.style.left = 0;
         $inf.style.left = 0;
     };
-
-    // Credits to Chris Coyier https://css-tricks.com/snippets/jquery/done-resizing-event/ 
-    window.onresize = function (e) {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () {
-            intPosition = $int.getBoundingClientRect().left;
-            infPosition = $inf.getBoundingClientRect().left;
-            $int.style.left = 0;
-            $inf.style.left = 0;
-            distance = infPosition - intPosition;
-        }, 250);
-    }
 
     function getRandomColors() {
         let randomColor1 = colors[Math.floor(Math.random() * colors.length)];
