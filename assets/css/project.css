@@ -22,7 +22,7 @@ header {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 8rem;
     font-variation-settings: 'wght' var(--font-regular);
     margin: 0;
 }
