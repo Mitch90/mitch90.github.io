@@ -7,7 +7,7 @@
     let resizeTimer;
 
     if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
-        console.log('Safari is a terrible browser, please switch to either Chrome or Firefox');
+        console.log('Safari is a terrible browser, please also check out my portfolio in either Chrome or Firefox');
         $interestsCard.style.display = 'none';
         $plansCard.style.display = 'none';
     }

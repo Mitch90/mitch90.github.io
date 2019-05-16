@@ -1,3 +1,7 @@
+html {
+    overflow-x: hidden;
+}
+
 main {
     --main-height: calc(85vh - var(--margin-optimized) - var(--margin) - 20vh);
     width: 100%;
