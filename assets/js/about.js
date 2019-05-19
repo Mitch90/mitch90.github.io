@@ -1,8 +1,8 @@
 (function () {
-    const $interests = document.querySelector('.interests');
-    const $interestsCard = document.querySelector('.card__interests');
-    const $plans = document.querySelector('.plans');
-    const $plansCard = document.querySelector('.card__plans');
+    let $interests = document.querySelector('.interests');
+    let $interestsCard = document.querySelector('.card__interests');
+    let $plans = document.querySelector('.plans');
+    let $plansCard = document.querySelector('.card__plans');
     const $cards = $('.about__card');
     let resizeTimer;
 
