@@ -1,71 +1,74 @@
-$(function () {
-    const viewportWidth = $(window).width();
-    const viewportHeight = $(window).height();
+'use strict';
+
+import { selected, initDrag, dragElement, emptySelection } from "./utils.mjs";
+
+(function () {
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
     const cardDimension = Math.min(viewportWidth, viewportHeight) * 0.3;
     const margin = cardDimension / 2;
     const dimensionsArray = [margin, margin, viewportWidth - margin, viewportHeight - margin];
-    const $cards = $('.project__card');
-    const $projects = $('.projects__list a');
+    const $cards = document.querySelectorAll('.project__card');
+    const $projects = document.querySelectorAll('.projects__list a');
     let resizeTimer;
     // console.log(viewportWidth, viewportHeight);
 
     // get random points to throw the cards
     const sampleArray = makeSamples();
 
-    $cards.each(function (i) {
+    $cards.forEach(function (card, i) {
         let randomRotation = Math.floor(Math.random() * 30) - 15;
+        
+        card.style.cssText = `left: ${sampleArray[i][0]}px; top: ${sampleArray[i][1]}px; transform: rotate(${randomRotation}deg) scale(1); transition-delay: ${i * .05}s`;
 
-        $(this).css({
-            "left": sampleArray[i][0],
-            "top": sampleArray[i][1],
-            "transform": `rotate(${randomRotation}deg) scale(1)`,
-            "transition-delay": `${i * .05}s`
+        card.addEventListener("touchstart", moveCard, false);
+        card.addEventListener("mousedown", moveCard, false);
+        card.addEventListener("mouseover", highlightProjectText, false);
+        card.addEventListener("mouseleave", highlightProjectText, false);
+    });
+
+    document.ontouchmove = ev => {
+        if (selected !== null) {
+            document.querySelectorAll('.projects__list a').forEach(project => {
+                project.classList.add("no--events");
+            });
+        }
+        dragElement(ev);
+    };
+    document.ontouchend = ev => {
+        document.querySelectorAll('.projects__list a').forEach(project => {
+            project.classList.remove("no--events");
         });
-    });
-    $cards.on("touchstart mousedown", function (ev) {
-        ev.preventDefault();
-        initDrag(ev, ev.currentTarget, "home");
-    }).on("mouseover", function (ev) {
-        let order = ev.currentTarget.getAttribute('data-order');
-        let $project = document.querySelector(`.projects__list a[data-order='${order}']`);
+        emptySelection(ev);
+    };
+    document.onmousemove = ev => {
+        if (selected !== null) {
+            document.querySelectorAll('.projects__list a').forEach(project => {
+                project.classList.add("no--events");
+            });
+        }
+        dragElement(ev);
+    };
+    document.onmouseup = ev => {
+        document.querySelectorAll('.projects__list a').forEach(project => {
+            project.classList.remove("no--events");
+        });
+        emptySelection(ev);
+    };
 
-        $project.classList.add('card--match');
-    }).on("mouseleave", function (ev) {
-        let order = ev.currentTarget.getAttribute('data-order');
-        let $project = document.querySelector(`.projects__list a[data-order='${order}']`);
-
-        $project.classList.remove('card--match');
-    });
-    document.ontouchmove = dragElement;
-    document.ontouchend = emptySelection;
-    document.onmousemove = dragElement;
-    document.onmouseup = emptySelection;
-
-    $projects.on("mouseover", function (ev) {
-        let order = ev.currentTarget.getAttribute('data-order');
-        let $card = document.querySelector(`.project__card[data-order='${order}']`);
-        let parentEl = document.getElementById('home');
-        let rotation = $card.getAttribute('style').replace(/.*(rotate\(.*deg\)).*/, '$1');
-        $card.style.transform = `${rotation} scale(1.05)`;
-        $card.classList.add('card--moving');
-        parentEl.appendChild($card);
-
-    }).on("mouseleave", function (ev) {
-        let order = ev.currentTarget.getAttribute('data-order');
-        let $card = document.querySelector(`.project__card[data-order='${order}']`);
-        let rotation = $card.getAttribute('style').replace(/.*(rotate\(.*deg\)).*/, '$1');
-        $card.style.transform = `${rotation} scale(1)`;
-        $card.classList.remove('card--moving');
-    });
+    $projects.forEach(project => {
+        project.addEventListener("mouseleave", reorderStack, false);
+        project.addEventListener("mouseover", reorderStack, false);
+    })
 
     // Credits to Chris Coyier https://css-tricks.com/snippets/jquery/done-resizing-event/ 
     window.onresize = function (e) {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function () {
-            const newViewportWidth = $(window).width();
-            const newViewportHeight = $(window).height();
+            const newViewportWidth = window.innerWidth;
+            const newViewportHeight = window.innerHeight;
 
-            $cards.each(function (i, el) {
+            $cards.forEach(el => {
                 const positionTop = +el.getAttribute('style').replace(/left:.*top: (.*)px; transform.*/, '$1');
                 const positionLeft = +el.getAttribute('style').replace(/left: (.*)px; top.*/, '$1');
                 
@@ -73,7 +76,7 @@ $(function () {
                     el.style.left = newViewportWidth < positionLeft ? `${newViewportWidth - 150}px` : `${positionLeft}px`;
                     el.style.top = newViewportHeight < positionTop ? `${newViewportHeight - 150}px` : `${positionTop}px`;
                 }
-            });
+            })
 
             const $int = document.getElementById('interaction');
             const $inf = document.getElementById('information');
@@ -89,6 +92,11 @@ $(function () {
             };
 
         }, 250);
+    }
+
+    function moveCard(ev) {
+        ev.preventDefault();
+        initDrag(ev, ev.target, "home");
     }
 
     function makeSamples() {
@@ -107,7 +115,32 @@ $(function () {
         }
 
     }
-});
+
+    function highlightProjectText (ev) {
+        let order = ev.target.getAttribute('data-order');
+        let $project = document.querySelector(`.projects__list a[data-order='${order}']`);
+        if (ev.type === "mouseover") {
+            $project.classList.add('card--match');
+        } else {
+            $project.classList.remove('card--match');
+        }
+    }
+
+    function reorderStack (ev) {
+        let order = ev.target.getAttribute('data-order');
+        let $card = document.querySelector(`.project__card[data-order='${order}']`);
+        let rotation = $card.getAttribute('style').replace(/.*(rotate\(.*deg\)).*/, '$1');
+        if (ev.type === "mouseover") {
+            let parentEl = document.getElementById('home');
+            $card.style.transform = `${rotation} scale(1.05)`;
+            $card.classList.add('card--moving');
+            parentEl.appendChild($card);
+        } else {
+            $card.style.transform = `${rotation} scale(1)`;
+            $card.classList.remove('card--moving');
+        }
+    }
+})();
 
 // Based on https://observablehq.com/@mbostock/poisson-disk-sampling, credits to Mike Bostock
 function* samples([x0, y0, x1, y1], n, k = 30) {

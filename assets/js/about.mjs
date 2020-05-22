@@ -1,9 +1,13 @@
+'use strict';
+
+import { selected, initDrag, dragElement, emptySelection } from "./utils.mjs";
+
 (function () {
     let $interests = document.querySelector('.interests');
     let $interestsCard = document.querySelector('.card__interests');
     let $plans = document.querySelector('.plans');
     let $plansCard = document.querySelector('.card__plans');
-    const $cards = $('.about__card');
+    const $cards = document.querySelectorAll('.about__card');
     let resizeTimer;
 
     if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
@@ -15,9 +19,9 @@
     calculateMask($interests, $interestsCard);
     calculateMask($plans, $plansCard);
 
-    $cards.on("touchstart mousedown", function (ev) {
-        ev.preventDefault();
-        initDrag(ev, ev.currentTarget, "about");
+    $cards.forEach(card => {
+        card.addEventListener("touchstart", moveCard, false);
+        card.addEventListener("mousedown", moveCard, false);
     })
 
     document.ontouchmove = function (ev) {
@@ -71,6 +75,11 @@
     }
 
 })();
+
+function moveCard(ev) {
+    ev.preventDefault();
+    initDrag(ev, ev.target, "about");
+}
 
 function calculateMask($annotations, $card) {
     const annotationsDimensions = $annotations.getBoundingClientRect();

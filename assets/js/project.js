@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
     const options = { root: null, threshold: [0, 0.75] };
     let callback = function (entries, observer) {

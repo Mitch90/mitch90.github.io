@@ -1,4 +1,6 @@
-let selected = null;
+'use strict';
+
+export let selected = null;
 let currentX;
 let currentY;
 let initialX;
@@ -7,7 +9,7 @@ let xOffset = 0;
 let yOffset = 0;
 
 // Will be called when user starts dragging an element
-function initDrag(e, el, parent) {
+export function initDrag(e, el, parent) {
     // Store the object of the element which needs to be moved
     selected = { el: el, parent: parent };
     if (parent === 'home') {
@@ -26,13 +28,13 @@ function initDrag(e, el, parent) {
         initialX = e.touches[0].clientX - xOffset - selected.el.offsetLeft;
         initialY = e.touches[0].clientY - yOffset - selected.el.offsetTop;
     } else {
-        initialX = e.pageX - xOffset - selected.el.offsetLeft;
-        initialY = e.pageY - yOffset - selected.el.offsetTop;
+        initialX = e.clientX - xOffset - selected.el.offsetLeft;
+        initialY = e.clientY - yOffset - selected.el.offsetTop;
     }
 }
 
 // Will be called when user dragging an element
-function dragElement(e) {
+export function dragElement(e) {
     if (selected !== null) {
         e.preventDefault();
         if (e.type === "touchmove") {
@@ -50,7 +52,7 @@ function dragElement(e) {
 }
 
 // Destroy the object when we are done
-function emptySelection(e) {
+export function emptySelection(e) {
     if (selected !== null) {
         if (selected.parent === 'home') {
             let rotation = selected.el.getAttribute('style').replace(/.*(rotate\(.*deg\)).*/, '$1');
