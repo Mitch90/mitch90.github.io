@@ -44,19 +44,21 @@ order: 1
     <p>The last challenge was to maintain both the temporal and spatial dimensions of the phenomenon.</p>
     <p class="paragraph--new">After a few iterations of different visual models, we went with a mixed approach: <a class="external--link" href="https://en.wikipedia.org/wiki/Treemapping" target="_blank" rel="noopener noreferrer">treemaps</a>, representing the amount of waste related to each country, are arranged in space as if they were part of a <a class="external--link" href="https://en.wikipedia.org/wiki/Cartogram" target="_blank" rel="noopener noreferrer">Demers cartogram</a> hence simulating as closely as possible the relative position of countries on a geographic map. This raised a new challenge: a round of user testing sessions brought up the need to bridge the gap of abstraction between the visualization and a real map. For this reason the user is introduced to the final design through a sort of tutorial where countries are first placed on a map and then “transformed” step by step in treemaps, introducing one at a time all the visual encoding variables.</p>
     <p>The data can then be filtered by year and by category of waste.</p>
-    <div class="project__video" style="background-image: url('{{ '/assets/images/toxicwaste-gif01.gif' | relative_url }}')">
+    <figure class="project__video" style="background-image: url('{{ '/assets/images/toxicwaste-gif01.gif' | relative_url }}')">
       <video autoplay="autoplay" loop="loop" muted="muted" onstart="this.play();" onended="this.play();">
         <source src="{{ '/assets/videos/toxicwaste-gif01.mp4' | relative_url }}" type="video/mp4">
         <p>Your browser doesn't support HTML5 video. Here is a <a href="{{ '/assets/videos/toxicwaste-gif01.mp4' | relative_url }}">link to the video</a> instead.</p>
       </video>
-    </div>
+      <figcaption class="sr-only">Animated image of the filters in action.</figcaption>
+    </figure>
     <p>By clicking on a single country, a more in-depth view is provided. The color of the treemap divides the imports from the exports, while the two different levels of subdivisions highlight where the waste was imported from/exported to (level 1 &#x2014 solid border) and what kind of waste were moved (level 2 &#x2014 dashed border).</p>
-    <div class="project__video" style="background-image: url('{{ '/assets/images/toxicwaste-gif02.gif' | relative_url }}')">
+    <figure class="project__video" style="background-image: url('{{ '/assets/images/toxicwaste-gif02.gif' | relative_url }}')">
       <video autoplay="autoplay" loop="loop" muted="muted" onstart="this.play();" onended="this.play();">
         <source src="{{ '/assets/videos/toxicwaste-gif02.mp4' | relative_url }}" type="video/mp4">
         <p>Your browser doesn't support HTML5 video. Here is a <a href="{{ '/assets/videos/toxicwaste-gif02.mp4' | relative_url }}">link to the video</a> instead.</p>
       </video>
-    </div>
+      <figcaption class="sr-only">Animated image of the overview of a single country shown as a treemap.</figcaption>
+    </figure>
   </div>
 </section>
 <section class="project__content">

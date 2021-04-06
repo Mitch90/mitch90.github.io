@@ -2,23 +2,23 @@
 title: Michele Invernizzi - Selected projects
 ---
 <main id="home">
-    <div class="projects__list">
+    <div class="projects__list" role="list" aria-label="Selected projects:">
         {% assign projects = site.projects | sort: "order" %}
         {% for project in projects %}
-        <a href="{{ project.url }}" data-order="{{ project.order }}">{{ project.title }}</a>
+        <a href="{{ project.url }}" role="listitem" data-order="{{ project.order }}">{{ project.title }}</a>
         {% unless forloop.last %}
-        <span>&#x2014</span>
+        <span aria-hidden="true">&#x2014</span>
         {% endunless %}
         {% endfor %}
     </div>
     {% assign cards = site.projects | sort: "order" %}
     {% for project in cards %}
-    <div class="project__card" data-order="{{ project.order }}">
+    <div class="project__card" aria-hidden="true" data-order="{{ project.order }}">
         <img srcset="{{ '/assets/images/' | append: project.thumbnail | relative_url }},
              {{ '/assets/images/' | append: project.thumbnail | replace: '.png', '-2x.png' | relative_url }} 2x" src="{{ '/assets/images/' | append: project.thumbnail | replace: '.png', '-2x.png' | relative_url }}" alt="Thumbnail for project {{ project.title }}">
     </div>
     {% endfor %}
 </main>
 <footer>
-    <p>Designed and coded by me. No &#x1f36a&#x1f36a&#x1f36a here, sorry!</p>
+    <p>Designed and coded by me. No <span aria-hidden="true">&#x1f36a&#x1f36a&#x1f36a</span><span class="sr-only">cookies</span> here, sorry!</p>
 </footer>

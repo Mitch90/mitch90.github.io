@@ -40,12 +40,13 @@ order: 4
     <p>The first was a team of researchers from the Computer and Information Science department at Northeastern University, lead by David Choffnes. They were developing an app, <a class="external--link" href="https://recon.meddle.mobi/" target="_blank" rel="noopener noreferrer">ReCon</a>, that could monitor and block any personally identifying information requested knowingly or unknowingly by apps on a user’s phone. Here I tried to design an interface that introduced the user on how ReCon worked and that exposed the data collected, giving back the user control on what to share.</p>
     <img class="project__image" src="{{ '/assets/images/recon.png' | relative_url }}" alt="ReCon experiment">
     <p>The second collaboration was with a group of activists led by Claudio Agosti that, among other projects, is developing a tool called <a class="external--link" href="https://facebook.tracking.exposed/" target="_blank" rel="noopener noreferrer">facebook.tracking.exposed</a>. At the time the aim of the project was, as the name implies, to try to exposed the News Feed algorithm used by Facebook by showing how it affected the user experience with the platform. I thus tried to design an interface that could present each user their feed from a different perspective, highlighting changes in ranking, typology of posts, evolution in time, etc.</p>
-    <div class="project__video">
-      <video autoplay="autoplay" loop="loop" muted="muted" onstart="this.play();" onended="this.play();">
+    <figure class="project__video">
+      <video autoplay="autoplay" loop="loop" muted="muted" onstart="this.play();" onended="this.play();" tabindex="-1">
         <source src="{{ '/assets/videos/fbtrex.mp4' | relative_url }}" type="video/mp4">
         <p>Your browser doesn't support HTML5 video. Here is a <a href="{{ '/assets/videos/fbtrex.mp4' | relative_url }}">link to the video</a> instead.</p>
       </video>
-    </div>
+      <figcaption class="sr-only">Animated image of the tool's interface.</figcaption>
+    </figure>
     <p class="paraghraph--spacer">In both projects my main objective was always to design solutions that could remove at least in part the veil that covered these invisible processes covered by technological complexity.</p>
   </div>
 </section>
