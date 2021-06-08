@@ -5,10 +5,12 @@ title: Michele Invernizzi - Selected projects
     <div class="projects__list" role="list" aria-label="Selected projects:">
         {% assign projects = site.projects | sort: "order" %}
         {% for project in projects %}
-        <a href="{{ project.url }}" role="listitem" data-order="{{ project.order }}">{{ project.title }}</a>
-        {% unless forloop.last %}
-        <span aria-hidden="true">&#x2014</span>
-        {% endunless %}
+        <a href="{{ project.url }}" role="listitem" data-order="{{ project.order }}">
+            {{ project.title }}
+            {% unless forloop.last %}
+            <span aria-hidden="true">&#x2014</span>
+            {% endunless %}
+        </a>
         {% endfor %}
     </div>
     {% assign cards = site.projects | sort: "order" %}

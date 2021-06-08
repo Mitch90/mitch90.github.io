@@ -13,17 +13,17 @@ nav > div {
     max-width: 60%;
 }
 
-nav h3 span {
+nav .text--h3 span {
     -webkit-transition: color 0.3s;
     transition: color 0.3s;
 }
 
-nav h4 {
+nav .text--h4 {
     font-size: 16px;
     font-variation-settings: 'wght' var(--font-regular);
 }
 
-nav h4 span {
+nav .text--h4 span {
     position: relative;
     -webkit-transition: left 0.4s ease;
     transition: left 0.4s ease;

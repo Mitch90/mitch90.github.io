@@ -13,7 +13,7 @@
     // make jobs move on hover
     const $int = document.getElementById('interaction');
     const $inf = document.getElementById('information');
-    const $job = document.querySelector('nav h4');
+    const $job = document.querySelector('nav .text--h4');
     let intPosition = $int.getBoundingClientRect().left;
     let infPosition = $inf.getBoundingClientRect().left;
     $int.style.left = 0;

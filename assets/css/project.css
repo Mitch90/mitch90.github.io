@@ -21,14 +21,14 @@ header {
     width: var(--content-width);
 }
 
-h1 {
+header h1 {
     font-size: 2rem;
     font-variation-settings: 'wght' var(--font-regular);
     margin: 0;
     margin-top: 6rem;
 }
 
-h2 {
+header h2 {
     font-size: 1.3rem;
     font-variation-settings: 'wght' var(--font-regular);
     margin: 0 0 1.2rem;
@@ -253,7 +253,7 @@ a.pagination__right:hover .pagination__arrow {
 
 /* very small devices */
 @media (max-width: 320px) {
-    h1 {
+    header h1 {
         margin-top: 8rem;
     }
 }
@@ -264,10 +264,10 @@ a.pagination__right:hover .pagination__arrow {
         height: calc(100vh - var(--margin-optimized) * 2 - 0.8rem);
         min-height: 0px;
     }
-    h1 {
+    header h1 {
         font-size: 3.3rem;
     }
-    h2 {
+    header h2 {
         font-size: 1.6rem;
     }
     .project__link {
@@ -339,10 +339,10 @@ a.pagination__right:hover .pagination__arrow {
     header {
         height: calc(70vh - var(--margin-optimized) * 2 - 0.8rem);
     }
-    h1 {
+    header h1 {
         font-size: 4.1rem;
     }
-    h2 {
+    header h2 {
         font-size: 1.8rem;
         margin: 0 0 1.8rem;
     }
@@ -362,10 +362,10 @@ a.pagination__right:hover .pagination__arrow {
     header {
         height: calc(100vh - var(--margin-optimized) * 2 - 0.8rem);
     }
-    h1 {
+    header h1 {
         font-size: 5rem;
     }
-    h2 {
+    header h2 {
         font-size: 2rem;
     }
     .project__link {

@@ -36,6 +36,12 @@ main {
     transition: font-variation-settings 0.3s;
 }
 
+.projects__list a span {
+    font-variation-settings: 'wght' var(--font-regular);
+    -webkit-transition: none;
+    transition: none;
+}
+
 .projects__list a.no--events {
     pointer-events: none;
 }
@@ -47,6 +53,12 @@ main {
 
 .projects__list a.link--active {
     font-variation-settings: 'wght' var(--font-bold);
+}
+
+.projects__list a:hover span,
+.projects__list a.card--match span,
+.projects__list a.link--active span {
+    font-variation-settings: 'wght' var(--font-regular);
 }
 
 .project__card {
